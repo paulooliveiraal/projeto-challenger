@@ -1,0 +1,417 @@
+/* Estilo global do corpo */
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0e0e0;
+}
+
+/* Estilo do contêiner do formulário */
+.container {
+    width: 30%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(0.1turn, #91919154, #e0e0e0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    margin-bottom: 100px;
+}
+
+/* Estilo da área do texto */
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+/* Estilo do conteúdo principal */
+.content {
+    margin-left: 200px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Estilo do footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .footer-icons {
+    margin: 0 10px;
+}
+
+/* Estilo da sidebar */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateY(-100%);
+    visibility: hidden;
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 5px;
+}
+
+/* Estilos da sidebar para telas pequenas */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100vw;
+        height: 100vh;
+        transform: translateY(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidebar a {
+        display: block;
+        text-align: center;
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .sidebar a:first-child {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 35px;
+    }
+}
+
+/* Estilos da sidebar para telas médias e grandes */
+@media (min-width: 769px) {
+    .sidebar {
+        width: 200px;
+        height: 100vh;
+    }
+
+    .content {
+        margin-left: 200px;
+        padding: 20px;
+    }
+}
+
+/* Estilo dos links da sidebar */
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar a:hover {
+    background-color: #444;
+}
+
+.sidebar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    background-color: transparent;
+    transition: background-color 0.9s ease, width 0.5s ease;
+}
+
+.sidebar a:hover::before {
+    background-color: rgba(255, 255, 255, 0.041);
+    width: 100%;
+}
+
+/* Estilo dos inputs e campos de formulário */
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #9c9c9c;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 1s ease;
+    font-size: 16px;
+}
+
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+textarea::placeholder,
+select::placeholder {
+    font-size: 15px;
+}
+
+select {
+    font-size: 16px;
+    padding: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #33333373;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    top: -3px;
+}
+
+input[type="radio"]:checked {
+    background-color: #333;
+    box-shadow: inset 0 0 0 1px #e0e0e0d0;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    border-bottom-color: #757575;
+}
+
+input[type="submit"] {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Estilo de grupos de inputs */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-group label,
+.checkbox-group label {
+    margin-right: 10px;
+}
+
+.flex-group {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.flex-group input[type="text"] {
+    width: 50px;
+    padding: 1px;
+    border: none;
+    border-bottom: 2px solid #9c9c9c;
+    background-color: transparent;
+    outline: none;
+    transition: border-color 1s ease;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.flex-group input[type="text"]::placeholder {
+    text-align: left;
+}
+
+.flex-group input[name="kills"],
+.flex-group input[name="deaths"],
+.flex-group input[name="assists"] {
+    border-bottom: 2px solid #9c9c9c;
+}
+
+.flex-group input[type="text"]:focus {
+    border-bottom-color: #757575;
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #444;
+    font-weight: bold;
+    color: #ccc;
+}
+
+/* Adicionando efeito de deslizamento à direita */
+.sidebar.show {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Adicionando divisão entre os botões do menu lateral */
+.sidebar a:not(:last-child) {
+    border-bottom: 1px solid white;
+}
+
+/* Estilos adicionais para responsividade */
+@media (max-width: 1856px) {
+    .container {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1672px) {
+    .container {
+        width: 30%;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .container {
+        margin-left: 60px;
+    }
+
+    .sidebar-toggle {
+        top: 10px;
+        left: 60px;
+    }
+}
+
+@media (max-width: 1240px) {
+    .container {
+        width: 80%;
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .container {
+        margin-left: 50px;
+    }
+
+    .sidebar-toggle {
+        top: 10px;
+        left: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        transform: translateY(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .container {
+        width: 70%;
+        margin-left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 612px) {
+    .container {
+        width: 90%;
+    }
+
+    .sidebar {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        transform: translateY(-100%); /* Ajustado para usar translateX */
+    }
+
+    .sidebar.show {
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    footer {
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        width: 100%;
+    }
+}

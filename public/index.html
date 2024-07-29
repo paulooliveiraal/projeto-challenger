@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Challenger</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="/">Formulário</a>
+        <a href="/games">Lista de Partidas</a>
+    </div>
+    <button class="sidebar-toggle">&#9776;</button>
+    <div class="content">
+        <div class="container">
+            <h2>Adicionar partida</h2>
+            <form action="/api/partidas" method="post">
+                <fieldset>
+                    <legend>Formulário</legend>
+                    <label for="data">Data: </label>
+                    <input type="date" id="data" name="data" required><br>
+
+                    <label for="dweek">Dia da semana: </label>
+                    <input type="text" id="dweek" name="dweek" readonly><br>
+
+                    <label for="periodo">Período: </label>
+                    <input type="text" name="periodo" placeholder="Tarde..." required><br>
+
+                    <label for="nmatch">Quantidade de partidas: </label>
+                    <input type="text" name="nmatch" placeholder="Primeira..." required><br>
+
+                        
+                    <div class="lane-container"> 
+                        <label for="lane">Escolha a rota: </label>
+                        <select id="lane" name="lane" required>
+                            <option value="top">Top</option>
+                            <option value="jungle">Jungle</option>
+                            <option value="mid" selected>Mid</option>
+                            <option value="adc">Ad carry</option>
+                            <option value="sup">Suporte</option>
+                        </select><br>    
+                    </div>   
+                    <label for="pick">Pick: </label>
+                    <input type="text" name="pick" placeholder="Kassadin..." required><br>
+
+                    <label for="enemy">Adversário: </label>
+                    <input type="text" name="enemy" placeholder="Sylas..." required><br>
+                        
+                    <div class="radio-group">   
+                        <label for="wlane">Ganhou a lane? </label>
+                        <input type="radio" id="sim" name="wlane" value="sim">
+                        <label for="sim">Sim</label>
+                        <input type="radio" id="nao" name="wlane" value="nao">
+                        <label for="nao">Não</label>
+                        <input type="radio" id="even" name="wlane" value="even">
+                        <label for="even">Even</label><br>
+                    </div>    
+                    
+                    <div class="flex-group">
+                        <label for="kills">K/D/A:</label>
+                        <input type="text" name="kills" placeholder="Kills" required>
+                        <label for="deaths"></label>
+                        <input type="text" name="deaths" placeholder="Deaths" required>
+                        <label for="assists"></label>
+                        <input type="text" name="assists" placeholder="Assists" required><br>
+                    </div>
+
+                    <div class="radio-group" id="resultgame">    
+                        <label for="gresult">Resultado: </label>
+                        <input type="radio" id="win" name="gresult" value="win">
+                        <label for="win">Win</label>
+                        <input type="radio" id="lose" name="gresult" value="lose">
+                        <label for="lose">Lose</label> <br>
+                    </div>    
+                        
+                    <label for="pdl">PDLs W-L: </label>
+                    <input type="text" name="pdl" placeholder="+25/-17..." required><br>
+
+                    <label for="farm">Farm no jogo: </label>
+                    <input type="text" name="farm" placeholder="148..." required><br>
+
+                    <label for="elo">Elo da partida: </label>
+                    <input type="text" name="elo" placeholder="Esmeralda II..." required><br>
+
+                    <label for="resume">Resumo do Jogo: </label><br>
+                    <textarea name="resume" rows="10" cols="30" placeholder="Escreva aqui um resumo da partida..." required></textarea>
+                    <br>
+                    <input type="submit" value="Salvar">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    
+
+    <script src="../dist/script.js"></script>
+
+    <footer>
+        <a href="https://www.instagram.com/_benalb/" target="_blank">Instagram</a>
+        <a href="https://github.com/paulooliveiraal" target="_blank">GitHub</a>
+        <p>&copy; 2024 Ben Albuquerque</p>
+    </footer>
+</body>
+</html>
