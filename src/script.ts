@@ -27,6 +27,7 @@ if (dateInput) {
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar') as HTMLElement;
     const container = document.querySelector('.content') as HTMLElement;
+    const sidebarToggle = document.querySelector('.sidebar-toggle') as HTMLElement;
 
     console.log('Sidebar antes da mudança:', sidebar.classList);
 
@@ -36,11 +37,13 @@ function toggleSidebar() {
             sidebar.classList.add('hidden');
             sidebar.style.transform = 'translateY(-100%)';
             container.style.marginTop = '0';
+            sidebarToggle.style.display = 'block';
         } else {
             sidebar.classList.remove('hidden');
             sidebar.classList.add('show');
             sidebar.style.transform = 'translateY(0)';
             container.style.marginTop = `${sidebar.clientHeight}px`;
+            sidebarToggle.style.display = 'none';
         }
     } else {
         sidebar.classList.remove('show', 'hidden');
@@ -50,6 +53,19 @@ function toggleSidebar() {
     console.log('Sidebar depois da mudança:', sidebar.classList);
 }
 
+// Função para fechar a barra lateral ao clicar no botão dentro dela.
+function closeSidebar() {
+    const sidebar = document.querySelector('.sidebar') as HTMLElement;
+    const container = document.querySelector('.content') as HTMLElement;
+    const sidebarToggle = document.querySelector('.sidebar-toggle') as HTMLElement;
+
+    sidebar.classList.remove ('show');
+    sidebar.classList.add('hidden');
+    sidebar.style.transform = 'translateY(-100%)';
+    container.style.marginTop = '0';
+    sidebarToggle.style.display = 'block';
+}
+
 // Adiciona o evento de clique para alternar a barra lateral apenas uma vez
 document.addEventListener('DOMContentLoaded', () => {
     const sidebarToggle = document.querySelector('.sidebar-toggle') as HTMLElement;
@@ -57,6 +73,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebarToggle.addEventListener('click', (event) => {
             event.stopPropagation(); // Previne a propagação do clique.
             toggleSidebar();
+        });
+    }
+
+    const sidebarToggleMenu = document.querySelector('.sidebar-toggle-menu') as HTMLElement;
+    if (sidebarToggleMenu) {
+        sidebarToggleMenu.addEventListener('click', (event) => {
+            event.stopPropagation();
+            closeSidebar();
         });
     }
 
@@ -71,6 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.remove('hidden');
         sidebar.classList.remove('show');
         container.style.marginLeft = '200px';
+        // Esconde o botão de fechar o menu em telas grandes
+        const sidebarToggleMenu = document.querySelector('.sidebar-toggle-menu') as HTMLElement;
+        if (sidebarToggleMenu) {
+            sidebarToggleMenu.style.display = 'none';
+        }
     }
 });
 
@@ -78,14 +107,27 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('resize', () => {
     const sidebar = document.querySelector('.sidebar') as HTMLElement;
     const container = document.querySelector('.content') as HTMLElement;
+    const sidebarToggle = document.querySelector('.sidebar-toggle') as HTMLElement;
 
     if (window.innerWidth <= 768) {
         sidebar.classList.add('hidden');
         sidebar.classList.remove('show');
         container.style.marginLeft = '0';
+        sidebarToggle.style.display = 'block';
+        // Mostra o botão de fechar o menu em telas pequenas
+        const sidebarToggleMenu = document.querySelector('.sidebar-toggle-menu') as HTMLElement;
+        if (sidebarToggleMenu) {
+            sidebarToggleMenu.style.display = 'block';
+        }
     } else {
         sidebar.classList.remove('hidden');
         sidebar.classList.remove('show');
         container.style.marginLeft = '200px';
+        sidebarToggle.style.display = 'none';
+        // Esconde o botão de fechar o menu em telas grandes
+        const sidebarToggleMenu = document.querySelector('.sidebar-toggle-menu') as HTMLElement;
+        if (sidebarToggleMenu) {
+            sidebarToggleMenu.style.display = 'none';
+        }
     }
 });

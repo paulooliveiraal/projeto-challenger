@@ -31,6 +31,16 @@ textarea {
     transition: margin-left 0.3s ease-in-out;
 }
 
+/* Estilo da borda em volta do formulário */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+legend {
+    display: none;
+}
+
 /* Estilo do footer */
 footer {
     background-color: #333;
@@ -76,7 +86,6 @@ footer .footer-icons {
 
 .sidebar.hidden {
     transform: translateY(-100%);
-    visibility: hidden;
 }
 
 .sidebar-toggle {
@@ -113,16 +122,35 @@ footer .footer-icons {
         display: block;
         text-align: center;
         padding: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .sidebar a:first-child {
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .sidebar-footer .sidebar-toggle-menu {
+        display: fixed;/* enquanto isso aqui estiver none
+        o botão não vai aparecer naquele menu. */
+        width: 100%;
+        padding: 15px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        border: none;
+        border-radius: 0;
+    }
+
+    .sidebar a:not(:nth-last-child(2)) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.212);
     }
 
     .content {
         margin-left: 0;
         padding: 35px;
+        transition: margin-top 0.3s ease-in-out; /* modificação de agr */
     }
 }
 
@@ -147,10 +175,7 @@ footer .footer-icons {
     padding: 10px 0;
     position: relative;
     transition: background-color 0.3s ease;
-}
-
-.sidebar a:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.212);
 }
 
 .sidebar a:hover {
@@ -178,9 +203,11 @@ input[type="text"],
 input[type="date"],
 textarea,
 select {
-    width: 100%;
+    width: calc(100% - 20px);
     margin-bottom: 5px;
     padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     border: none;
     border-bottom: 2px solid #9c9c9c;
     background-color: transparent;
@@ -310,9 +337,19 @@ th {
     visibility: visible;
 }
 
+.sidebar-footer {
+    display: block; /* Quando é tela maior, o botão de fechar o menu não pode
+     estar aparecendo, o problema é que quando eu boto o display
+     none, ele também some do menu em telas pequenas. */
+}
+
+.sidebar-footer .sidebar-toggle-menu {
+    display: fixed;
+}
+
 /* Adicionando divisão entre os botões do menu lateral */
-.sidebar a:not(:last-child) {
-    border-bottom: 1px solid white;
+.sidebar a:nth-last-child(2) {
+    border-bottom: none;
 }
 
 /* Estilos adicionais para responsividade */
